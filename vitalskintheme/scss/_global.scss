@@ -1,0 +1,522 @@
+/******************* GLOBAL DEFAULTS & RESETS *********************/
+
+:root {
+    --body-font: OpenSans, Helvetica, Arial, sans-serif;
+    --heading-font: serif;
+    --section-padding: 1rem;
+    --link-color-example: black;
+    font-size: $mainFontSize;
+}
+
+@include tablet {
+    :root {
+        --section-padding: 2rem;
+    }
+}
+
+*,
+*:before,
+*:after {
+    box-sizing: border-box;
+}
+
+*:focus,
+*:active {
+    outline: none;
+}
+
+html {
+    width: 100vw;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+    scroll-behavior: smooth; 
+}
+
+body {
+    width: 100vw;
+    margin: 0;
+    padding: 0;
+    font-family: MontserratRegular, Helvetica, Arial, sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 4.27vw;
+    background-color: $white;
+    color: $baseColor;
+    position: relative;
+    overflow-x: hidden;
+    @include tablet {
+    	font-size: $mainFontSize;
+    }
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: RalewayBold, Helvetica, Arial, sans-serif;
+    line-height: 1.2;
+    margin: 0.25em 0;
+    color: $primary;
+}
+h1 {
+	font-size: 2.5em;
+}
+h2 {
+	font-size: 2em;
+}
+h3 {
+	font-size: 1.5em;
+    font-family: UbuntuRegular, Helvetica, Arial, sans-serif;
+}
+h4 {
+	font-size: 1em;
+    font-family: UbuntuRegular, Helvetica, Arial, sans-serif;
+}
+p {
+    font-size: 0.9em;
+    font-family: MontserratRegular;
+    font-weight: 100;
+    color: $baseColor;
+    line-height: 1.625;
+
+    @include tablet {
+        font-size: 0.95em;
+    }
+
+    @include desktop {
+        font-size: 1em;
+    }
+}
+
+a {
+    font-family: MontserratRegular, Helvetica, Arial, sans-serif;
+    text-decoration: none;
+    color: $baseColor;
+    transition: 0.25s;
+    cursor: pointer;
+    &:hover {
+        text-decoration: none;
+        color: $secondary;
+    }
+
+    a:active {
+        color: blue;
+    }
+}
+
+ul {
+    list-style: none;
+}
+
+button {
+    cursor: pointer;
+}
+
+img {
+    max-width: 100%;
+    width: 100%;
+    height: auto;
+  }
+
+/******************* GLOBAL CLASSES *********************/
+.uppercase {
+    text-transform: uppercase;
+}
+
+.align--center {
+    text-align: center;
+}
+
+.align--left {
+    text-align: left;
+}
+
+.align--right {
+    text-align: right;
+}
+
+.preheading {
+	display: block;
+	font-family: UbuntuRegular;
+	color: $secondary;
+	text-transform: uppercase;
+}
+
+.subheading {
+	display: block;
+	font-family: MontserratRegular;
+    line-height: 1.25;
+    @include tablet {
+    	line-height: 1.5;
+    }
+}
+
+.section {
+    width: 100%;
+    max-width: 1440px;
+    padding: 2em 1em;
+    margin: 0 auto;
+    @include tablet {
+        padding: 4em 4em;
+    }
+}
+
+.section-wrapper {
+    max-width: 1200px;
+	margin: 0 auto;
+}
+
+.image-wrapper {
+    width: var(--image-width, auto);
+    height: var(--image-height, auto);
+    margin: 0 auto; //center image
+}
+
+.btn {
+    padding: 0.5em 1em;
+    font-weight: 600;
+    font-size: 1em;
+    transition: 0.25s;
+    display: inline-block;
+    border-radius: 2em;
+}
+
+/* SOLID BACKGROUND COLOR BUTTONS  */
+.btn-primary {
+	font-family: DMSansMedium; 
+	background-color: $primary;
+    border: 0.2em solid $primary;
+    color: $white;
+    margin: 0.5rem 0;
+    &:hover {
+        background-color: $white;
+        border: 0.2em solid $primary;
+        color: $primary;
+    }
+    
+    &.green {
+        background-color: $secondary;
+        border: 0.2em solid $secondary;
+        &:hover {
+            background-color: $white;
+            border: 0.2em solid $secondary;
+            color: $secondary;
+        }
+    }
+    
+    &.white {
+        background-color: $white;
+        border: 0.2em solid $primary;
+        color: $primary;
+        &:hover {
+            background-color: $primary;
+            border: 0.2em solid $primary;
+            color: $white;
+        }
+    }
+}
+
+/* TRANSPARENT BACKGROUND COLOR BUTTONS  */
+.btn-secondary {
+	font-family: MontserratXtraBold; 
+    background-color: $transparent;
+    border: 0.2em solid $primary;
+    margin: 0.5em 0;
+    color: $primary;  
+
+    &:hover {
+        background-color: $primary;
+        border: 0.2em solid $primary;
+        color: $white;
+    }
+
+    &.white {
+	    border: 0.2em solid $white;
+	    color: $white;
+
+	    &:hover {
+	        background-color: $white;
+	        border: 0.2em solid $white;
+	        color: $primary;
+	    }
+    }
+    
+    &.green {
+	    border: 0.2em solid $secondary;
+	    color: $secondary;
+
+	    &:hover {
+	        background-color: $secondary;
+	        border: 0.2em solid $secondary;
+	        color: $white;
+	    }
+    }
+
+    &.arrow {
+    	position: relative;
+    	padding-right: 3em;
+    	
+    	&:after {
+    		content: " ";
+    		background-image: url("/wp-content/themes/vitalskintheme/assets/arrow.svg");
+    		    width: 1.5em;
+			    height: 1.5em;
+			    position: absolute;
+			    background-size: cover;
+			    top: 0.4em;
+			    right: 1em;
+			    transition: right 250ms ease-in-out;
+    	}
+
+    	&:hover {
+    		&:after {
+			    right: 0.5em;
+			    filter: invert(75%) sepia(54%) saturate(643%) hue-rotate(152deg) brightness(94%) contrast(97%);
+    		}	
+    	}
+    }
+}
+
+.link {
+	font-family: MontserratXtraBold; 
+	color: $primary; 
+	display: block;
+	margin: 0.5rem 0;
+    border-bottom: 5px dotted $secondary;
+    padding-bottom: 0.5em;
+     &.inline-on-desktop {
+	 	@include tablet {
+	 		display: inline-block;
+	 	}
+	}
+
+	&.arrow {
+    	position: relative;
+    	padding-right: 3em;
+    	&:after {
+    		content: " ";
+    		background-image: url("/wp-content/themes/vitalskintheme/assets/arrow.svg");
+    		width: 1.5em;
+			height: 1.5em;
+			position: absolute;
+			background-size: cover;
+			top: -0.1em;
+			right: 1em;
+			transition: right 250ms ease-in-out;
+			filter: invert(75%) sepia(54%) saturate(643%) hue-rotate(152deg) brightness(94%) contrast(97%);
+    	}
+    }
+
+    &:hover {
+    	color: $secondary;
+    	
+        &.arrow {
+    		
+            &:after {
+    			right: 0.5em;
+    			filter: invert(5%) sepia(54%) saturate(645%) hue-rotate(152deg) brightness(75%) contrast(97%);
+    		}
+    	}
+    }
+}
+
+
+/******************* HELPERS *********************/
+
+.desktop-only {
+    display: none !important;
+
+    @include tablet {
+        display: block !important;
+        &.inline {
+        	display: inline-block !important;
+        }
+    }
+}
+
+.mobile-only {
+    display: block !important;
+    &.inline {
+       	display: inline-block !important;
+    }
+    @include tablet {
+        display: none !important;
+    }
+}
+
+.hide {
+    display: none;
+}
+
+.show {
+    display: block;
+}
+
+.full-width {
+    width: 100%;
+    max-width: 100%;
+}
+
+.disable-scroll {
+	overflow: hidden;
+	height: 100vh;
+}
+
+.border-top--green {
+	border-top: 1em solid $secondary;
+}
+
+.white {
+    color: $white;
+}
+
+.no-pad {
+    padding: 0;
+}
+.gform_button.button {
+    -webkit-appearance: none;
+}
+/******************* NATIVE PAGES *********************/
+.section.error {
+    @include tablet {
+        min-height: calc(100vh - 396px);
+    }
+}
+
+.location-template {
+    .section.all-locations {
+        @include tablet {
+            display: flex;
+        }
+        .mapsvg-mobile-buttons {
+            display: none;
+        }
+        .title {
+            padding: 1em;
+            @include tablet {
+                flex-basis: 30%;
+                background-color: $lightergreen;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                
+            }
+            @include desktop {
+                padding: 4em;
+            }
+        }
+        .map {
+            @include tablet {
+                flex-basis: 70%;
+            }
+        }
+    }
+    #mapsvg-map-1 .mapsvg-directory-item, #directory .mapsvg-directory-item {
+        background-color: $secondary;
+        color: $primary;
+        font-family: MontserratBold;
+        text-align: center;
+        border-radius: 1em;
+        margin: 1em;
+        font-size: 1.25em;
+        &:hover {
+            background-color: $lightergreen;
+        }
+        &.selected {
+            background-color: $tertiary;
+            color: $white;
+        }
+        @include tablet {
+            min-width: 10em;
+        }
+    }
+    .section--pop-in-form {
+        display: none;
+    }
+    #directory .mapsvg-directory, #results .mapsvg-details-container, .mapsvg-directory {
+        z-index: 1;
+    }
+    #directory h2 {
+        display: none;
+    }
+    @include tablet {
+        #directory h2 {
+            display: block;
+        }
+        #directory .mapsvg-controller-view-content {
+            display: flex;
+        }
+
+        #results .mapsvg-details-container .mapsvg-controller-view-content {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            .location {
+                margin: 1em 0;
+                flex-basis: 23%;
+            }
+        }
+
+        .section--pop-in-form {
+            display: block;
+            background-image: url("/wp-content/themes/vitalskintheme/assets/location-pop-in-bg.png");
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: -25% 15em;
+            .section-wrapper {
+                background-color: $primary;
+                max-width: 1200px;
+                border-bottom-left-radius: 20em;
+                border-top-left-radius: 20em;
+                border-bottom-right-radius: 20em;
+                border-top-right-radius: 20em;
+                margin: 2em auto;
+                padding: 1em;
+                .content-wrapper {
+                    display: flex;
+                    justify-content: space-evenly;
+                    align-items: center;
+                    max-width: 1000px;
+                    margin: 0 auto;
+                    padding: 0 3em;
+                    .blurb-wrapper {
+                        flex-basis: 65%;
+                        h2, h3 {color: $white;}
+                    } 
+                    .form-wrapper {
+                        flex-basis: 30%;
+                        color: $white;
+                        .gform_wrapper.gravity-theme .gfield input.large, .gform_wrapper.gravity-theme .gfield select.large {
+                            border-radius: 1em;
+                            padding: 0.75em;
+                        }
+                        .gform_footer { 
+                            padding: 0;
+                            #gform_submit_button_5 {
+                                padding: 0.5em 3em;
+                                font-weight: 600;
+                                font-size: 1em;
+                                transition: 0.25s;
+                                display: inline-block;
+                                border-radius: 2em;
+                                font-family: DMSansMedium; 
+                                color: $white;
+                                margin: 0.5rem 0;
+                                background-color: $secondary;
+                                border: 0.2em solid $secondary;
+                                &:hover {
+                                    background-color: $white;
+                                    border: 0.2em solid $secondary;
+                                    color: $secondary;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
